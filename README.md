@@ -2,6 +2,9 @@
 
 [![JSR](https://jsr.io/badges/@ei/biome)](https://jsr.io/@ei/biome)
 
+> [!TIP]
+> **Mantenedor**: @neves
+
 Configuração padrão da E-Inscrição do [biome](https://biomejs.dev/) para todos os projetos js da empresa, front e back.
 
 ## Instalação
