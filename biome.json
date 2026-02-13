@@ -82,8 +82,8 @@
     }
   },
   "plugins": [
-    "./plugins/no-double-parent-import.grit",
-    "./plugins/no-double-parent-side-effect-import.grit"
+    "./node_modules/@ei/biome/plugins/no-double-parent-import.grit",
+    "./node_modules/@ei/biome/plugins/no-double-parent-side-effect-import.grit"
   ],
   "vcs": {
     "clientKind": "git",
