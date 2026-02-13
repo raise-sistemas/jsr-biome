@@ -1,19 +1,31 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.3.13/schema.json",
-  "vcs": {
-    "enabled": false,
-    "clientKind": "git",
-    "useIgnoreFile": false
+  "$schema": "https://biomejs.dev/schemas/2.3.15/schema.json",
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on",
+        "useSortedAttributes": "on",
+        "useSortedKeys": "off",
+        "useSortedProperties": "on"
+      }
+    },
+    "enabled": true
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
   },
   "files": {
     "ignoreUnknown": false,
     "includes": [
       "biome.json",
-      "package.json",
-      "tsconfig.json",
       "deno.json",
       "jsr.json",
-      "src/**"
+      "package.json",
+      "plugins/**",
+      "src/**",
+      "tsconfig.json"
     ]
   },
   "formatter": {
@@ -21,26 +33,61 @@
     "indentStyle": "space",
     "lineWidth": 100
   },
+  "javascript": {
+    "formatter": {
+      "arrowParentheses": "asNeeded",
+      "quoteStyle": "double",
+      "semicolons": "asNeeded",
+      "trailingCommas": "es5"
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
-    }
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "double",
-      "semicolons": "asNeeded",
-      "trailingCommas": "es5",
-      "arrowParentheses": "asNeeded"
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
+      "nursery": {
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "info",
+          "options": {
+            "attributes": [
+              "classList"
+            ],
+            "functions": [
+              "clsx",
+              "cva",
+              "tw",
+              "tw.*"
+            ]
+          }
+        }
+      },
+      "performance": {
+        "noBarrelFile": "error"
+      },
+      "recommended": true,
+      "style": {
+        "noDefaultExport": "error",
+        "useFilenamingConvention": {
+          "level": "error",
+          "options": {
+            "filenameCases": [
+              "camelCase",
+              "export"
+            ],
+            "requireAscii": true,
+            "strictCase": true
+          }
+        }
       }
     }
+  },
+  "plugins": [
+    "./plugins/no-double-parent-import.grit",
+    "./plugins/no-double-parent-side-effect-import.grit"
+  ],
+  "vcs": {
+    "clientKind": "git",
+    "enabled": false,
+    "useIgnoreFile": false
   }
 }
